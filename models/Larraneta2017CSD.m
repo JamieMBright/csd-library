@@ -92,6 +92,11 @@ int100pc = lower_interval;
 int66pc = lower_interval.*(2/3);
 int33pc = lower_interval.*(1/3);
 int0pc = ones(size(lower_interval)).*90;
+% now need to be in hourly format
+hint100pc = nanmean(reshape(int100pc(1:length(int100pc)-mod(length(int100pc),60)),[60,(length(int100pc)-mod(length(int100pc),60))/60]),1);
+hint66pc = nanmean(reshape(int66pc(1:length(int66pc)-mod(length(int66pc),60)),[60,(length(int66pc)-mod(length(int66pc),60))/60]),1);
+hint33pc = nanmean(reshape(int33pc(1:length(int33pc)-mod(length(int33pc),60)),[60,(length(int33pc)-mod(length(int33pc),60))/60]),1);
+hint0pc = nanmean(reshape(int0pc(1:length(int0pc)-mod(length(int0pc),60)),[60,(length(int0pc)-mod(length(int0pc),60))/60]),1);
 
 % figure('Name','plot the limit boundaries [1]','color','w')
 % plot(int100pc);
@@ -106,18 +111,19 @@ int0pc = ones(size(lower_interval)).*90;
 % xlabel('Time')
 % legend('3/3','2/3','1/3','0/3')
 
-interval1 = [int0pc,int33pc];
-interval2 = [int33pc,int66pc];
-interval3 = [int66pc,int100pc];
+interval1 = [hint0pc;hint33pc];
+interval2 = [hint33pc;hint66pc];
+interval3 = [hint66pc;hint100pc];
 
 
 % This is an hourly test and so we shall consider the whole thing an hourly
 % window. If the hour passes the tests, the minutes within the hour pass.
 
 % take mean hourly values. Potential issue with non-continous data...
-hdni =   nanmean(reshape(dni(1:length(dni)-mod(length(dni),60)),[60,(length(dni)-mod(length(dni),60))/60]),1);
+% hdni =   nanmean(reshape(dni(1:length(dni)-mod(length(dni),60)),[60,(length(dni)-mod(length(dni),60))/60]),1);
 hdnics = nanmean(reshape(dnics(1:length(dni)-mod(length(dni),60)),[60,(length(dnics)-mod(length(dnics),60))/60]),1);
 hzen =   nanmean(reshape(zen(1:length(dni)-mod(length(dni),60)),[60,(length(zen)-mod(length(zen),60))/60]),1);
+
 
 % Build csd
 c1 = ones(size(hdni));
@@ -132,9 +138,9 @@ kb = hdni./hdnics;
 % sky and measured means. The analysis consist in the calculation of the 
 % absolute percentage differences of the measured and clear sky radiation 
 % Dcs-m:
-c1(hzen<interval1(1) & hzen>interval1(2) & abs(100.*((hdnics-hdni)./hdni))<35)=0;
-c1(hzen<interval2(1) & hzen>interval2(2) & abs(100.*((hdnics-hdni)./hdni))<15)=0;
-c1(hzen<interval3(1) & hzen>interval3(2) & abs(100.*((hdnics-hdni)./hdni))<10)=0;
+c1(hzen<interval1(1,:) & hzen>interval1(2,:) & abs(100.*((hdnics-hdni)./hdni))<35)=0;
+c1(hzen<interval2(1,:) & hzen>interval2(2,:) & abs(100.*((hdnics-hdni)./hdni))<15)=0;
+c1(hzen<interval3(1,:) & hzen>interval3(2,:) & abs(100.*((hdnics-hdni)./hdni))<10)=0;
 % From [1]; "Whenever Dcs-m is lower than 2.5%, the hour is classified as 
 % clear regardless the rest criteria output. This statement includes points 
 % where the measured DNI is higher than the clear sky DNI. Table 1 presents 
@@ -157,9 +163,9 @@ c2(sign(scs)==sign(sm))=0;
 lcs = [NaN, sqrt((hdnics(2:end)-hdnics(1:end-1)).^2)];
 lm = [NaN, sqrt((hdni(2:end)-hdni(1:end-1)).^2)];
 ldcs = abs(100.*((lcs-lm)./lm));
-c3(hzen<interval1(1) & hzen>interval1(2) & ldcs<220)=0;
-c3(hzen<interval2(1) & hzen>interval2(2) & ldcs<110)=0;
-c3(hzen<interval3(1) & hzen>interval3(2) & ldcs<30)=0;
+c3(hzen<interval1(1,:) & hzen>interval1(2,:) & ldcs<220)=0;
+c3(hzen<interval2(1,:) & hzen>interval2(2,:) & ldcs<110)=0;
+c3(hzen<interval3(1,:) & hzen>interval3(2,:) & ldcs<30)=0;
 
 
 %% Apply the criteria
