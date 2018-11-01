@@ -43,14 +43,8 @@
 % % run the clear-sky detection routine.
 % csd = Shen2018CSD(ghi,dni,dnics,aod,1); %plot figure set to 1 so an output is plotted
 %
-function csd = Shen2018CSD(ghi,dni,dnics,aod,plot_figure)
+function csd = Shen2018CSD(dni,dnics,aod,plot_figure)
 % safety checks
-if ~iscolumn(ghi)
-    ghi = ghi';
-    if ~iscolumn(ghi)
-        error('var ghi must be a column vector')
-    end
-end
 if ~iscolumn(dni)
     dni = dni';
     if ~iscolumn(dni)
@@ -69,7 +63,7 @@ if ~iscolumn(aod)
         error('var zen must be a column vector')
     end
 end
-if length(unique([length(ghi),length(dni),length(aod),length(dnics)]))~=1
+if length(unique([length(dni),length(aod),length(dnics)]))~=1
     error('vars must be equal in length')
 end
 
@@ -184,12 +178,12 @@ csd(durations==duration_threshold)=0;
 if exist('plot_figure','var')
     figure('name','Shen CSD example','color','w');
     hold on
-    plot(ghi)
-    CSD = ghi;
+    plot(dni)
+    CSD = dni;
     CSD(csd==1)=NaN;
     plot(CSD,'linewidth',2,'color','k')
     hold off    
-    legend('GHI','Clear detected')
+    legend('DNI','Clear detected')
     ylabel('Irradiance [Wm^{-2}]')  
     set(gca,'xtick',[]);
     xlabel('Time')
