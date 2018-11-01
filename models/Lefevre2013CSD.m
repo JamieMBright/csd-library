@@ -126,12 +126,14 @@ csd(k<0.3)=0;
 % 0.02."
 kt = ghi./exth;
 h = 90-zen;
-M = 1./(sind(h) + 0.15.*(h + 3.885).^-1.253); % DL; Clarify this one is 
-% from; Kasten, F.; Young, A. T. 1989. Revised optical air mass tables and 
-% approximation formula. Applied Optics. 28, 4735–4738.
+M = 1./(sind(h) + 0.15.*(h + 3.885).^-1.253);  
+% An alternative derivation of relative airmass is taken so as to avoid the
+% additional input in atmospheric pressure from ; Kasten, F.; Young, A. T.
+% 1989. Revised optical air mass tables and approximation formula. Applied
+% Optics. 28, 4735–4738.
 kt_prime = kt ./  ( 1.031 .* exp(-1.4 ./ (0.9 + 9.4 ./ M))+0.1);
 
-% find the standard deviation on a 90 min window, ignoring considering NaNs
+% find the standard deviation on a 90 min window, ignoring NaNs
 KTp = std(hankel(kt_prime,[kt_prime(end),NaN(1,89)]),0,2,'omitnan');
 
 % apply the test such that clear is only identified if KTp<0.02
