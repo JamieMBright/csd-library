@@ -1,7 +1,7 @@
-% Ruiz-arias, José A.; Gueymard, Christian A. and Cebecauer, Tomas. 2018.
-% Direct Normal Irradiance Modeling : Evaluating the Impact on Accuracy of
-% Worldwide Gridded Aerosol Databases SolarPACES Conf., Casablanca,
-% Morocco, Oct. 2018 Direct.
+% [1] Ruiz-arias, José A.; Gueymard, Christian A. and Cebecauer, Tomas. 
+%     2018. 'Direct Normal Irradiance Modeling : Evaluating the Impact on 
+%     Accuracy of Worldwide Gridded Aerosol Databases', SolarPACES Conf., 
+%     Casablanca, Morocco, Oct. 2018.
 
 % Coded by Jamie M. Bright 11/2018.
 % Converted from Fortran code provided by Jose Ruiz-Arias 11/2018
@@ -67,7 +67,7 @@ end
 dt = 1;
 min_cs_points = 5;
 max_iter = 10;
-max_sza =85;
+max_sza = 85;
 
 csza = cosd(zen);
 idxs = find(abs([NaN;diff(1365.*csza)])<0.05);

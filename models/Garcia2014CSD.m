@@ -1,7 +1,11 @@
-% García, R D; García, O E; Cuevas, E; Cachorro, V E; Ramos, R; Frutos, A M
-% De. 2014. Solar radiation measurements compared to simulations at the
-% BSRN Izaña station . Mineral dust radiative forcing and efficiency study.
-% Journal of Geophysical Research: Atmospheres. 119, 179-194.
+% Garcia 2014 Clear-sky detection method [1]
+%
+% ## References ##
+% [1] García, R D; García, O E; Cuevas, E; Cachorro, V E; Ramos, R; Frutos, 
+%     A M De. 2014. Solar radiation measurements compared to simulations at 
+%     the BSRN Izaña station . Mineral dust radiative forcing and 
+%     efficiency study. Journal of Geophysical Research: Atmospheres. 119, 
+%     179-194.
 %
 % Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------

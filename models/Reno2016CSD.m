@@ -1,6 +1,9 @@
-% Reno, M. J. and Hansen, C. W. 2016. Identification of periods of clear
-% sky irradiance in time series of GHI measurements. Renewable Energy. 90,
-% 520-531.
+% Reno 2016 Clear-sky detection method [1]
+%
+% ## References ##
+% [1] Reno, M. J. and Hansen, C. W. 2016. Identification of periods of 
+%     clear sky irradiance in time series of GHI measurements. Renewable 
+%     Energy. 90, 520-531.
 %
 % Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------
@@ -51,7 +54,7 @@ if length(unique([length(ghi),length(ghics)]))~=1
 end
 
 %% Criteria thresholds and strictness
-% standard thresholds as derived by Reno in section 3.2.
+% Standard thresholds as derived in section 3.2 of [1].
 mean_lim=75; %Wm-2
 max_lim=75; %Wm-2
 lower_L_lim=-5;
@@ -62,12 +65,12 @@ temporal_resolution = 1; % 1-min
 interval_size = 10;
 
 %% Moving Window
-% This approach is described in section 3.3 of the journal and enables
+% This approach is described in section 3.3 of [1] and enables
 % smaller time windows to be analysed, and therefore individual time steps.
 
 % To avoid a loop, the ghi time series are cacatonated
-ghi_window =hankel(ghi,[ghi(end),NaN(1,interval_size-1)]);
-ghics_window =hankel(ghics,[ghics(end),NaN(1,interval_size-1)]);
+ghi_window = hankel(ghi,[ghi(end),NaN(1,interval_size-1)]);
+ghics_window = hankel(ghics,[ghics(end),NaN(1,interval_size-1)]);
 
 %% initialise criteria
 c1 = zeros(size(ghi));
@@ -82,7 +85,7 @@ c5 = zeros(size(ghi));
 csi_mean=nanmean(ghics_window,2);
 ghi_mean=nanmean(ghi_window,2);
 
-% Criterion 1 is met if ghi_mean is clous enough to csi_mean
+% Criterion 1 is met if ghi_mean is close enough to csi_mean
 c1(abs(csi_mean-ghi_mean)>mean_lim)=1;
 
 %% Criterion 2: Maximum value of GHI

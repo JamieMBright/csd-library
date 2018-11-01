@@ -70,10 +70,10 @@ end
 % the evening, at some point the rate must cross 0 at solar noon.
 ext_rate_of_change = [NaN;diff(1365.*cosd(zen))];
 % find the minutes at suspected solar noon, take an abs to ignore the
-% afternoon, the shape is like  a curved V shape, note that zeniths >~90deg
+% afternoon, the shape is like a curved V shape, note that zeniths >~90deg
 % must be screened as Eext is 0 at night.
 idxs = find(abs(ext_rate_of_change)<0.05);
-% there are likely  to be many periods of rate being <0.05 as it is a
+% there are likely to be many periods of rate being <0.05 as it is a
 % conservative measure, it allows the exact solar noon to be absent from
 % the study. Many cases of <0.05 are indexed consecutively, e.g. idx=1
 % minute differences, and so we can remove any diff that is consecutive.

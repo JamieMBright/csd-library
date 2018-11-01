@@ -1,6 +1,9 @@
-% Perez, Richard; Ineichen, Pierre; Seals, Robert; Michalsky, Joseph;
-% Stewart, Ronald. 1990. Components from direct and global irradiance.
-% Solar Energy. 44 (5), 271-289.
+% Perez 1990 Clear-sky detection method [1]
+%
+% ## References ##
+% [1] Perez, Richard; Ineichen, Pierre; Seals, Robert; Michalsky, Joseph;
+%     Stewart, Ronald. 1990. Components from direct and global irradiance.
+%     Solar Energy. 44 (5), 271-289.
 %
 % Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------
@@ -59,13 +62,13 @@ if length(dif)~=length(dni) || length(dif)~=length(zen)
     error('vars must be equal')
 end
 
-% The sky's clearness, noted as e, is given as
+% The sky's clearness, noted as e, is given according to eq. (1) in [1] as:
 k = 1.041;
 e = ((dif + dni)./dif + k.*deg2rad(zen).^3)./(1 + k.*deg2rad(zen).^3);
 
 % apply the CSD test such that if e > 6.2, it is deemed to be clear.
 csd = zeros(size(dif));
-csd(e<6.2)=1;
+csd(e<6.2)=1; % from table 1 in [1].
 
 %% figure example
 if exist('plot_figure','var')

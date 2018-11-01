@@ -1,7 +1,9 @@
-% Inman, Rich H; Edson, James G and Coimbra, Carlos F M. 2015.
-% ScienceDirect Impact of local broadband turbidity estimation on
-% forecasting of clear sky direct normal irradiance Solar Energy. 117,
-% 125-138.
+% Inman 2015 Clear sky detection model [1]
+% 
+% ## References ##
+% [1] Inman, Rich H; Edson, James G and Coimbra, Carlos F M. 2015.
+%     Impact of local broadband turbidity estimation on forecasting of 
+%     clear sky direct normal irradiance Solar Energy. 117, 125-138
 %
 % Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------

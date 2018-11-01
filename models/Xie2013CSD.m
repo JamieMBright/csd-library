@@ -1,6 +1,10 @@
-% Y. Xie and Y. Liu. 2013. A new approach for simultaneously retrieving
-% cloud albedo and cloud fraction from surface-based shortwave radiation
-% measurements. Environmental Research Letters. 8 (044023), 1-9.
+% Xie 2013 Clear-sky detection method [1]
+%
+% ## References ##
+% [1] Y. Xie and Y. Liu. 2013. A new approach for simultaneously retrieving
+%     cloud albedo and cloud fraction from surface-based shortwave 
+%     radiation measurements. Environmental Research Letters. 8 (044023), 
+%     1-9.
 %
 % Converted from raw IDL (see end of doc) by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------

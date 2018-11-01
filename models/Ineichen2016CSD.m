@@ -1,5 +1,17 @@
-% Ineichen, P. 2016. ScienceDirect Validation of models that estimate the
-% clear sky global and beam solar irradiance. Solar Energ. 132, 332-344.
+% Ineichen 2016 Clear sky detection model [1]
+% 
+% ## References ##
+% [1] Ineichen, P. 2016. Validation of models that estimate the clear sky 
+%     global and beam solar irradiance. Solar Energ. 132, 332-344.
+% [2] Kasten, F., 1980. A simple parameterization of two pyrhelio- metric 
+%     formulae for determining the Linke turbidity factor. Meteorol. 
+%     Rundsch. 33, 124–127.
+% [3] Perez, R; Ineichen, P; Seals, R; Zelenka, A. 1990. Making full use of 
+%     the clearness index for parameterizing hourly insolation conditions. 
+%     Solar Energy. 45 (2), 111-114.
+% [4] Perez, Richard; Ineichen, Pierre; Seals, Robert; Michalsky, Joseph;
+%     Stewart, Ronald. 1990. Components from direct and global irradiance.
+%     Solar Energy. 44 (5), 271-289.
 %
 % Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------
@@ -97,17 +109,12 @@ csd = zeros(size(ghi));
 % clearness index
 kt = ghi./exth;
 
-% Optical air mass from Kasten, F., 1980. A simple parameterization of the
-% pyrheliometric formula for determining the Linke turbidity factor. Met.
-% Runds. 33, 124–127. 
+% Optical air mass from [2]
 h = 90-zen;
 M = 1./(sind(h) + 0.15.*(h + 3.885).^-1.253);
 
 % Modified global or surface irradiance clearness index. e.g. normalised by
-% solar elevation. This is taken from equation 1 in: Perez, R; Ineichen, P;
-% Seals, R; Zelenka, A. 1990. Making full use of the clearness index for
-% parameterizing hourly insolation conditions. Solar Energy. 45 (2),
-% 111-114;
+% solar elevation. This is taken from eq 1 in [3];
 kt_prime = kt ./  ( 1.031 .* exp(-1.4 ./ (0.9 + 9.4 ./ M))+0.1);
  
 %% Criteria
@@ -121,7 +128,7 @@ csd(abs(GHIsum-ghi)./ghi>0.05)=1;
 % The global clearness index Kt of the measurements is lower than 0.82, ?
 csd(kt>=0.82)=1;
 
-% the modified global clearness Kt' (Perez, 1990)ofthe measurements is
+% the modified global clearness Kt' (see [4]) of the measurements is
 % higher than 0.65, ?
 csd(kt_prime<=0.65)=1;
 

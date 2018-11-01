@@ -1,5 +1,8 @@
-% PVLIB detect_ghics at commit f4e4ad3bbe335fa49bf300ce53784d69d719ca98
-% https://github.com/pvlib/pvlib-python/pull/596/commits
+% Ellis 2018 Clear-sky detection method [1]
+%
+% ## References ##
+% [1] PVLIB detect_ghics at commit f4e4ad3bbe335fa49bf300ce53784d69d719ca98
+%     https://github.com/pvlib/pvlib-python/pull/596/commits
 % ------------------------------------------------------------------------
 %                              INPUTS 
 % ------------------------------------------------------------------------

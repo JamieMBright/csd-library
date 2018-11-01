@@ -1,6 +1,12 @@
-% Ineichen P. Comparison of eight clear-sky broadband models against 16
-% independent data-banks. Solar Energy 2006;80(4):468–78.
-% Also described in Younes 2007.
+% Ineichen 2006 Clear sky detection model [1]
+% 
+% ## References ##
+% [1] Ineichen P. Comparison of eight clear-sky broadband models against 16
+%     independent data-banks. Solar Energy 2006;80(4):468–78.
+%     Also described in Younes 2007
+% [2] Kasten, F., 1980. A simple parameterization of two pyrhelio- metric 
+%     formulae for determining the Linke turbidity factor. Meteorol. 
+%     Rundsch. 33, 124–127.
 %
 % Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------
@@ -65,7 +71,7 @@ end
 % pre alloacte the csd time series for use in criteria
 csd = zeros(size(dni));
 
-% air mass from Kasten 1980
+% air mass from [2]
 h = 90-zen;
 M = 1./(sind(h) + 0.15.*(h + 3.885).^-1.253);
 
@@ -85,8 +91,7 @@ delta_gsc = [NaN;delta_gsc;NaN];
 
 csd(abs(delta_gsc-delta_dni)>=0.1)=1;
 
-
-%% figure
+% figure
 if exist('plot_figure','var')
     figure('name','Ineichen 2006 CSD example','color','w');
     hold on

@@ -1,7 +1,10 @@
-% Quesada-Ruiz, Samuel Linares-Rodriguez, Alvaro Ruiz-arias, José A
-% Pozo-Vázquez, David. 2015. ScienceDirect An advanced ANN-based method to
-% estimate hourly solar radiation from multi-spectral MSG imagery. Solar
-% Energy. 115, 494-504.
+% Quesadra-Ruiz 2015 Clear-sky detection method [1]
+%
+% ## References ##
+% [1] Quesada-Ruiz, Samuel Linares-Rodriguez, Alvaro Ruiz-arias, José A
+%     Pozo-Vázquez, David. 2015. ScienceDirect An advanced ANN-based method 
+%     to estimate hourly solar radiation from multi-spectral MSG imagery. 
+%     Solar Energy. 115, 494-504.
 %
 % Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------

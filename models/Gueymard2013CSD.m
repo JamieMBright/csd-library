@@ -1,7 +1,12 @@
-% C.A. Gueymard. 2013. AEROSOL TURBIDITY DERIVATION FROM BROADBAND
-% IRRADIANCE MEASUREMENTS: METHODOLOGICAL ADVANCES AND UNCERTAINTY ANALYSIS
-% ASES Solar 2013 Conf., Baltimore, MD (2013)
-%  Copyright: C. Gueymard, Solar Consulting Services, Dec. 2012. 
+% Gueymard 2013 Clear-sky detection method [1]
+%
+% ## References ##
+% [1] C.A. Gueymard. 2013. Aerosol turbidity derivation from broadband 
+%     irradiance measurements: methodological advances and uncertainty 
+%     analysis ASES Solar 2013 Conf., Baltimore, MD (2013)
+%
+% Copyright: C. Gueymard, Solar Consulting Services, Dec. 2012. 
+%
 % Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------
 %                              INPUTS 

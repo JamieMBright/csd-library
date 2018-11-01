@@ -1,8 +1,22 @@
-% Ineichen, Pierre; Barroso, Carla Sofia; Geiger, Bernhard; Hollmann,
-% Rainer; Marsouin, Anne; Mueller, Richard. 2009. Satellite Application
-% Facilities irradiance products : hourly time step comparison and
-% validation over Europe. international Journal of Remote Sensing. 30 (21),
-% 5549-5571.
+% Ineichen 2009 Clear sky detection model [1]
+% 
+% ## References ##
+% [1] Ineichen, Pierre; Barroso, Carla Sofia; Geiger, Bernhard; Hollmann,
+%     Rainer; Marsouin, Anne; Mueller, Richard. 2009. Satellite Application
+%     Facilities irradiance products : hourly time step comparison and
+%     validation over Europe. international Journal of Remote Sensing. 30 
+%    (21), 5549-5571.
+% [2] Kasten, F., 1980. A simple parameterization of two pyrhelio- metric 
+%     formulae for determining the Linke turbidity factor. Meteorol. 
+%     Rundsch. 33, 124–127.
+% [3] Kasten, F.; Young, A. T. 1989. Revised optical air mass tables and 
+%     approximation formula. Applied Optics. 28, 4735–4738.
+% [4] Perez, R; Ineichen, P; Seals, R; Zelenka, A. 1990. Making full use of 
+%     the clearness index for parameterizing hourly insolation conditions. 
+%     Solar Energy. 45 (2), 111-114.
+% [5] Ngoko, B. O. Sugihara, H. and Funaki, T. 2014. Synthetic generation 
+%     of high temporal resolution solar radiation data using Markov models.
+%     Solar Energy. 103, 160-170.
 %
 % Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------
@@ -66,41 +80,21 @@ if length(unique([length(ghi),length(exth),length(zen)]))~=1
     error('vars must be equal in length')
 end
 
-% clearness index
+% clearness index (eq 7 in [1])
 kt = ghi./exth;
 
-% Optical air mass from Kasten, F., 1980. A simple parameterization of the
-% pyrheliometric formula for determining the Linke turbidity factor. Met.
-% Runds. 33, 124–127. I cannot acces the original, however, it is defined
-% in eq 9 in Ineichen 2009 as:
+% Optical air mass from [2]. I cannot access the original, however, it is 
+% defined in eq 9 in [1] as:
 h = 90-zen;
 M = 1./(sind(h) + 0.15.*(h + 3.885).^-1.253);
-% As the original is inaccessible, to ensure that Ineichen copied it
-% correctly, an alternative and later forumlation is also trialled. Kasten,
-% F.; Young, A. T. 1989. Revised optical air mass tables and approximation
-% formula. Applied Optics. 28, 4735–4738. M2 = 1./(cosd(zen) +
-% 0.50572.*(6.07995+90-zen).^-1.6364); corr2(M,M2)
+% As the original in [2] is inaccessible, to ensure that Ineichen copied it
+% correctly, an alternative and later formulation is also trialled (from 
+% [3]); M2 = 1./(cosd(zen) + 0.50572.*(6.07995+90-zen).^-1.6364); corr2(M,M2)
 
-% Modified global or surface irradiance clearness index. e.g. normalised by
-% solar elevation. This is taken from equation 1 in: Perez, R; Ineichen, P;
-% Seals, R; Zelenka, A. 1990. Making full use of the clearness index for
-% parameterizing hourly insolation conditions. Solar Energy. 45 (2),
-% 111-114; It is also the same as eq 8 in Ineichen 2009, and in alternative
-% applications such as eq 6 in Ngoko, B. O. Sugihara, H. and Funaki, T.
-% 2014. Synthetic generation of high temporal resolution solar radiation
-% data using Markov models. Solar Energy. 103, 160-170.
+% Modified global or surface irradiance clearness index. e.g., normalised 
+% by solar elevation. This is taken from eq 1 in [4]. It is also the same 
+% as eq 8 in [1], and in alternative applications such as eq 6 in [5].
 kt_prime = kt ./  ( 1.031 .* exp(-1.4 ./ (0.9 + 9.4 ./ M))+0.1);
- 
-% % Check that normalisation has occured
-% figure('name','zenith dependency on kt''','color','w')
-% scatter(90-zen,kt_prime,'.','MarkerEdgeAlpha',0.05)
-% hold on
-% scatter(90-zen,kt,'.','MarkerEdgeAlpha',0.05)
-% hold off
-% legend('kt''','kt')
-% xlabel('Solar Elevation Angle')
-% ylabel('Index')
-% % it doesn't look like it has... But.. I have checked everything.
     
 % perform the clear-sky detection criteria
 csd = zeros(size(ghi));

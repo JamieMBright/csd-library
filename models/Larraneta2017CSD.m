@@ -1,8 +1,14 @@
-% Larraneta, M; Reno, M J; Lillo-bravo, I; Silva-p, M A. 2017. Identifying
-% periods of clear sky direct normal irradiance. Renewable Energy. 113,
-% 756-763
+% Larraneta 2017 Clear sky detection model [1]
+% 
+% ## References ##
+% [1] Larraneta, M; Reno, M J; Lillo-bravo, I; Silva-p, M A. 2017. 
+%     Identifying periods of clear sky direct normal irradiance. Renewable 
+%     Energy. 113, 756-763.
+% [2] M.A. Silva-P?erez, Estimaci?on del recurso solar para sistemas 
+%    termosolares de concentraci?on, Doctoral thesis, University of Seville, 
+%    2002.
 %
-% Coded by Jamie M. Bright and David Lingfors 11/2018.
+% Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------
 %                              INPUTS 
 % ------------------------------------------------------------------------
@@ -60,16 +66,18 @@ if length(unique([length(dni),length(zen),length(dnics)]))~=1
     error('vars must be equal in length')
 end
 
-%% pre amble
-% a key focus of Larraneta is to define the A and B constants in the
-% Silva-Perez DNI clear-sky model. This seems redundant if we already have
-% a decent dnics estimate from the REST2.
+%% Preamble
+% A key focus of Larraneta is to define the A and B constants in the
+% Silva-Perez DNI clear-sky model [2]. This seems redundant if we already 
+% have a decent dnics estimate from the REST2.
 
+% Intervals of solar zenith angles % DL; where did you find these
+% intervals? Could not see where they are statin in [1].
 interval1 = [90,60];
 interval2 = [60,40];
 interval3 = [40,0];
 
-% this is an hourly test and so we shall consider the whole thing an hourly
+% This is an hourly test and so we shall consider the whole thing an hourly
 % window. If the hour passes the tests, the minutes within the hour pass.
 
 % take mean hourly values. Potential issue with non-continous data...
@@ -77,40 +85,42 @@ hdni =   nanmean(reshape(dni(1:length(dni)-mod(length(dni),60)),[60,(length(dni)
 hdnics = nanmean(reshape(dnics(1:length(dni)-mod(length(dni),60)),[60,(length(dnics)-mod(length(dnics),60))/60]),1);
 hzen =   nanmean(reshape(zen(1:length(dni)-mod(length(dni),60)),[60,(length(zen)-mod(length(zen),60))/60]),1);
 
-%build csd
+% Build csd
 c1 = ones(size(hdni));
 c2 = ones(size(hdni));
 c3 = ones(size(hdni));
 
-% clearness index of dni
+% clearness index of dni (eq 3 in [1]) % DL; isn't this the clear-sky
+% index?
 kb = hdni./hdnics;
 
-%% test 1: Hourly mean criterion.
-% The first criterion involves the comparison of the hourly clear sky and
-% measured means. The analysis consist in the calculation of the absolute
-% percentage differences of the measured and clear sky radiation Dcs-m i :
+%% Test 1: Hourly mean criterion.
+% From [1]; The first criterion involves the comparison of the hourly clear 
+% sky and measured means. The analysis consist in the calculation of the 
+% absolute percentage differences of the measured and clear sky radiation 
+% Dcs-m:
 c1(hzen<interval1(1) & hzen>interval1(2) & abs(100.*((hdnics-hdni)./hdni))<35)=0;
 c1(hzen<interval2(1) & hzen>interval2(2) & abs(100.*((hdnics-hdni)./hdni))<15)=0;
 c1(hzen<interval3(1) & hzen>interval3(2) & abs(100.*((hdnics-hdni)./hdni))<10)=0;
-% Whenever Dcs-m i is lower than 2.5%, the hour is classified as clear
-% regardless the rest criteria output. This statement includes points where
-% the measured DNI is higher than the clear sky DNI. Table 1 presents the
-% limit values for each solar interval.
+% From [1]; "Whenever Dcs-m is lower than 2.5%, the hour is classified as 
+% clear regardless the rest criteria output. This statement includes points 
+% where the measured DNI is higher than the clear sky DNI. Table 1 presents 
+% the limit values for each solar interval."
 c1(abs(100.*((hdnics-hdni)./hdni))<2.5)=0;
 
-%% test 2: slope criterion.
-% The second step consists on the comparison of the slopes of the
+%% Test 2: slope criterion.
+% From [1]; "The second step consists on the comparison of the slopes of the
 % straight lines that joins two hourly mean values. For each hour, the
 % slope would be the variation of the hourly DNI divided by the variation
-% of time.
+% of time."
 scs = [NaN,(hdnics(2:end)-hdnics(1:end-1))];
 sm = [NaN,(hdni(2:end)-hdni(1:end-1))];
 c2(sign(scs)==sign(sm))=0;
 
-%% test 3: line length criterion
-% The third step consist on the analysis ofthe length ofthe straight lines
-% that joins two hourly mean values and their corresponding absolute
-% percentage differences calculated as follows.
+%% Test 3: line length criterion
+% From [1]; "The third step consist on the analysis of the length of the 
+% straight lines that joins two hourly mean values and their corresponding 
+% absolute percentage differences calculated as follows."
 lcs = [NaN, sqrt((hdnics(2:end)-hdnics(1:end-1)).^2)];
 lm = [NaN, sqrt((hdni(2:end)-hdni(1:end-1)).^2)];
 ldcs = abs(100.*((lcs-lm)./lm));
@@ -119,24 +129,25 @@ c3(hzen<interval2(1) & hzen>interval2(2) & ldcs<110)=0;
 c3(hzen<interval3(1) & hzen>interval3(2) & ldcs<30)=0;
 
 
-%% apply the criteria
+%% Apply the criteria
+
 % Hourly criteria
 criteria = c1+c2+c3;
 
-% now scale back down to 1-min values
+% Now scale back down to 1-min values
 x = 1:length(criteria);
 xx = linspace(1,length(hdni),length(hdni).*60);
 criteria_1min = interp1(x,criteria,xx);
-% add nans to the final hour that could not be processed as it was
+% Add nans to the final hour that could not be processed as it was
 % incomplete on acound of mod(length(dni),60)
 criteria_1min = [criteria_1min,NaN(1,length(dni)-length(criteria_1min))];
 
-% instantiate the csd
+% Instantiate the csd
 csd=zeros(size(dni));
 csd(criteria_1min~=0)=1;
 
         
-%% figure example
+%% Figure example
 if exist('plot_figure','var')
     figure('name','Larraneta CSD example','color','w');
     hold on

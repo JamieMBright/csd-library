@@ -1,7 +1,10 @@
-% Batlles, Francisco Javier; Olmo, F. J.; Tovar, J; Alados-Arboledas,
-% Lucas. 1999. Comparison of cloudless sky parametrizations of solar
-% irradiance at various spanish midlatitude locations. Theoretical and
-% Applied Climatology. 66. 81-93.
+% Batlles 1999 [1]
+%
+% ## References ##
+% [1] Batlles, Francisco Javier; Olmo, F. J.; Tovar, J; Alados-Arboledas,
+%     Lucas. 1999. Comparison of cloudless sky parametrizations of solar
+%     irradiance at various spanish midlatitude locations. Theoretical and
+%     Applied Climatology. 66. 81-93.
 %
 % Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------

@@ -1,11 +1,17 @@
-% Lefèvre, Mireille; Oumbe, Armel; Blanc, Philippe; Espinar, Bella; Qu,
-% Zhipeng; Wald, Lucien; Homscheidt, Marion Schroedter; Arola, Antti;
-% Lefèvre, Mireille; Oumbe, Armel; Blanc, Philippe; Espinar, Bella;
-% Gschwind, Benoît. 2013. McClear : a new model estimating downwelling
-% solar radiation at ground level in clear-sky conditions To cite this
-% version : HAL Id : hal-00862906 McClear : a new model estimating
-% downwelling solar radiation at ground level in clear-sky conditions
-% Atmopspheric Measurement techniques. 6, 2403-2418.
+% Lefevre 2013 Clear sky detection model [1]
+% 
+% ## References ##
+% [1] M. Lefèvre, A. Oumbe, P. Blanc, B. Espinar, B. Gschwind, Z. Qu, L. 
+%     Wald, M. Schroedter-Homscheidt, C. Hoyer-Klick, A. Arola, A. 
+%     Benedetti, J. W. Kaiser, and J. J. Morcrette, ‘McClear: A new model 
+%     estimating downwelling solar radiation at ground level in clear-sky 
+%     conditions’, Atmos. Meas. Tech., vol. 6, no. 9, pp. 2403–2418, 2013.
+% [2] P. Ineichen and R. Perez, ‘Derivation of Cloud Index from 
+%     Geostationary Satellites and Application to the Production of Solar 
+%     Irradiance and Daylight Illuminance Data’, Theor. Appl. Climatol., 
+%     vol. 64, no. 1, pp. 119–130, 1999.
+% [3] Kasten, F.; Young, A. T. 1989. Revised optical air mass tables and 
+%     approximation formula. Applied Optics. 28, 4735–4738.
 %
 % Coded by Jamie M. Bright 11/2018.
 % ------------------------------------------------------------------------
@@ -88,39 +94,41 @@ if length(unique([length(ghi),length(dif),length(zen),length(exth)]))~=1
     error('vars must be equal in length')
 end
 
-% Two filters have been applied on the remaining BSRN data in order to
-% retain reliable clear-sky instants. 
+% From [1]; "Two filters have been applied on the remaining BSRN data in 
+% order to retain reliable clear-sky instants."
 csd = ones(size(ghi));
 
-% The first one was a constraint on the amount of diffuse irradiance with
-% respect to the global irradiance since the direct irradiance is promi-
-% nent in the case of clear sky. Only those minutes for which Ediff/Eglo
-% <0.3, i.e. when the diffuse component is much less than the direct one,
-% have been retained.
-k = dif./ghi;
+% From [1]; "The first one was a constraint on the amount of diffuse 
+% irradiance with respect to the global irradiance since the direct 
+% irradiance is prominent in the case of clear sky. Only those minutes for 
+% which Ediff/Eglo <0.3, i.e. when the diffuse component is much less than 
+% the direct one, have been retained."
+k = dif./ghi; 
 csd(k<0.3)=0;
 
-% The second filter dealt with the temporal variability of the irradiance.
-% If there is no cloud, the sky should be clear for a long period. Checking
-% this would avoid cases of broken clouds or noticeable spatial
-% heterogeneity around the site if ergodicity is assumed. 
-%      The first step ofthis filter was to retain only periods with enough
+% From [1]; "The second filter dealt with the temporal variability of the 
+% irradiance. If there is no cloud, the sky should be clear for a long 
+% period. Checking this would avoid cases of broken clouds or noticeable 
+% spatial heterogeneity around the site if ergodicity is assumed.
+%   The first step ofthis filter was to retain only periods with enough
 % measurements that have passed the first filter. A given instant t,
 % expressed in min, was kept only if at least 30% of the 1 min observations
-% in both intervals [t ?90, t] and [t, t +90] have been retained after the
-% first filter. 
-%   A corrected clearness index, KT? (Ineichen and Perez, 1999) is computed
-% for this instant: KT? = KT/[1.031exp(?1.4/(0.9+9.4/m))+0.1], (10) where m
-% is the air mass defined by Kasten and Young (1989): m(2S) =
-% (p/p0)/[cos(2S)+0.50572(2S +6.07995)?1.6364], (11) where 2S is expressed
-% in degree, and p and p0 are respec- tively the pressure at the site under
-% consideration and that at sea level. 
-%    An instant was considered clear ifthe standard deviation of KT? in the
-% interval [t ?90, t +90] was less than a threshold, set empirically to
-% 0.02. Only
+% in both intervals [t-90, t] and [t, t+90] have been retained after the
+% first filter.
+%   A corrected clearness index, KT' [2] is computed for this instant: 
+% KT' = KT/[1.031exp(-1.4/(0.9+9.4/m))+0.1], where m is the air mass 
+% defined by [3]: 
+% m(Theta_S) = (p/p0)/[cos(Theta_S)+ 0.50572(Theta_S + 6.07995)^-1.6364], 
+% where Theta_S is expressed in degree, and p and p0 are respectively the 
+% pressure at the site under consideration and that at sea level. 
+%    An instant was considered clear if the standard deviation of KT' in 
+% the interval [t -90, t +90] was less than a threshold, set empirically to
+% 0.02."
 kt = ghi./exth;
 h = 90-zen;
-M = 1./(sind(h) + 0.15.*(h + 3.885).^-1.253);
+M = 1./(sind(h) + 0.15.*(h + 3.885).^-1.253); % DL; Clarify this one is 
+% from; Kasten, F.; Young, A. T. 1989. Revised optical air mass tables and 
+% approximation formula. Applied Optics. 28, 4735–4738.
 kt_prime = kt ./  ( 1.031 .* exp(-1.4 ./ (0.9 + 9.4 ./ M))+0.1);
 
 % find the standard deviation on a 90 min window, ignoring considering NaNs

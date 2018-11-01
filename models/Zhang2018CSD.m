@@ -1,9 +1,12 @@
-% Zhang, Wenqi; Florita, Anthony R; Hodge, Bri-mathias; Mather, Barry.
-% 2018. Modeling and Simulation of High Frequency Solar Irradiance.
-% Preprint to Journal of Photovoltaics.
-% Zhang, Wenqi Kleiber, William Florita, Anthony R Hodge, Bri-mathias
-% Mather, Barry. 2018. A stochastic downscaling approach for generating
-% high-frequency solar irradiance scenarios. Solar Energy. 176, 370-379.
+% Zhang 2018 Clear-sky detection method [1]
+%
+% ## References ##
+% [1] Zhang, Wenqi; Florita, Anthony R; Hodge, Bri-mathias; Mather, Barry.
+%     2018. Modeling and Simulation of High Frequency Solar Irradiance.
+%     Preprint to Journal of Photovoltaics.
+% [2] Zhang, Wenqi Kleiber, William Florita, Anthony R Hodge, Bri-mathias
+%     Mather, Barry. 2018. A stochastic downscaling approach for generating
+%     high-frequency solar irradiance scenarios. Solar Energy. 176, 370-379.
 %
 
 % Coded by Jamie M. Bright 11/2018.

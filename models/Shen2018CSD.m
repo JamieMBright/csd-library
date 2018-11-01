@@ -1,7 +1,9 @@
-% Shen, Yu; Wei, Haikun; Zhu, Tingting; Zhao, Xin; Zhang, Kanjian. 2018. A
-% Data-driven Clear Sky Model for Direct Normal Irradiance A Data-driven
-% Clear Sky Model for Direct Normal Irradiance. IOP Conf. Series: Journal
-% of Physics: Conf. Series. 1072.
+% Shen 2018 Clear-sky detection method [1]
+%
+% ## References ##
+% [1] Shen, Yu; Wei, Haikun; Zhu, Tingting; Zhao, Xin; Zhang, Kanjian. 
+%     2018. A Data-driven Clear Sky Model for Direct Normal Irradiance. IOP
+%     Conf. Series: Journal of Physics: Conf. Series. 1072.
 %
 %
 % Coded by Jamie M. Bright 11/2018.
