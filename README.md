@@ -7,8 +7,8 @@ A clear-sky detection (CSD) methodology is one that analysies time-series of irr
 Welcome to the CSD methodology library. 
 This is a collection of as many CSD methodologies as was found in literature and subsequently coded into Matlab. 
 Note that many of the models required some form of interpretation or conversion. 
-Each model (found in the 'models' directory) state the citation of the literature article or conference proceedings from where the model was interpretted. 
-In case that the methdology was provided in code, the disclaimer reads "Coded and Converted by..." as opposed to just "Coded by...".
+Each model (found in the 'models' directory) state the citation of the literature article or conference proceedings from where the model was interpreted. 
+In the case when the methodology was provided in code, the disclaimer reads "Coded and Converted by..." as opposed to just "Coded by..."
 
 Whilst the CSD methodologies from literature do state their express intentions between type (1) and type (2) methodologies, our investigation determines that they are often not adept at their intended use case.
 As such, it is recommended to consider the different methodologies (start by using the Example.m script) in order to get a feel for their strengths and weaknesses. 
@@ -81,7 +81,7 @@ Each CSD model offers a single output which is of identical dimensions to the in
 ## Example
 An example of all the methodologies in action is provided in `Example.m`. 
 This script should work first time with no inputs and produce a nice figure to see every model's outputs. 
-In the "Example.m" script, sample data is provided from Adelaide Airport irradiance station operated by the Bureau of Meteorology, Australa. 
+In the "Example.m" script, sample data is provided from Adelaide Airport irradiance station operated by the Bureau of Meteorology, Australia. 
 It is situated at -34.9524 degrees of latitude and 138.5196 degrees of longitude (East of prime meridian) and at an elevation of 2m above sea level. 
 The time stamps are not provided. 
 You can use this to decide which is the most suitable method for your needs, as some have better applications than others.
@@ -102,14 +102,14 @@ The model interpretation and coding was carried out by Jamie M. Bright with supp
 We pay particular thanks to Gueymard, Jose Ruiz-Arias, Yu Xie, Javier Antonanzas, Ben Ellis and Wenqi 'Flora' Zhang for providing coded versions or support for their models. 
 
 ## Future
-This repositiory will be managed by Jamie M. Bright. Do not hesitate to get in touch should you have new models or corrections to existing ones that you wish to be ammended.     
+This repository will be managed by Jamie M. Bright. Do not hesitate to get in touch should you have new models or corrections to existing ones that you wish to be amended.       
 
 ## Usage rights
-All models within this library have been interpretted from literature, converted to Matlab from publically available code, or done so with permission of the author.
+All models within this library have been interpreted from literature, converted to Matlab from publically available code, or done so with permission of the author.
 These methods are freely available to be downloaded and adopted, though check the license before use! A **strict requirement** for using any of the models that may result in publication is appropriate recognition through citation of the original source as stated in each model [1], this repository as the location for obtaining the models [2] and furthermore reference the following work [3] which was the purpose for the conception of this library:
 
 [1] Found at the top of the script of each model script.
 
 [2] Bright, Jamie M. 2018. Clear-sky Detection Library. Github repository, url <https://github.com/JamieMBright/csd-library>.
 
-[3] Gueymard, Christian. A., Bright, Jamie M. and Lingfors, David. 2018. A posterori clear-sky idenfication methods in solar irradiance time series: Review and validation. Solar Energy. In Review.
+[3] Gueymard, Christian. A., Bright, Jamie M. and Lingfors, David. 2018. A posteriori clear-sky identification methods in solar irradiance time series: Review and validation. Solar Energy. In Review.
