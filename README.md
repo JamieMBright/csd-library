@@ -1,6 +1,6 @@
 # CLEAR-SKY DETECTION METHODOLOGY LIBRARY
 
-## What is a clear-sky detection methodolog?
+## What is a clear-sky detection methodology?
 A clear-sky detection (CSD) methodology is one that analysies time-series of irradiance data and determines one of two things, (1) whether or not the sky at the time of measurement was free of clouds, or (2) whether or not there was a clear line of sight to the sun at the time of measurement.
 
 ## Download
