@@ -1,44 +1,45 @@
-# csd-library
-Clear-sky irradiance detection methodologies from literature.
+# CLEAR-SKY DETECTION METHODOLOGY LIBRARY
+
+## What is a clear-sky detection methodolog?
+A clear-sky detection (CSD) methodology is one that analysies time-series of irradiance data and determines one of two things, (1) whether or not the sky at the time of measurement was free of clouds, or (2) whether or not there was a clear line of sight to the sun at the time of measurement.
 
 ## INTRODUCTION
-Welcome to the CLEAR-SKY DETECTION (CSD) library. This is a collection of all the CSD methodologies found in literature and coded into Matlab. Note that many of the models required some form of interpretation or conversion. 
-Each model (found in the 'models' directory) state the citation of the literature article or conference proceedings from where the model was interpretted. In case that the methdology was provided in code, the disclaimer reads "Coded and Converted by" as opposed to "Coded by".
+Welcome to the CSD methodology library. 
+This is a collection of as many CSD methodologies as was found in literature and subsequently coded into Matlab. 
+Note that many of the models required some form of interpretation or conversion. 
+Each model (found in the 'models' directory) state the citation of the literature article or conference proceedings from where the model was interpretted. 
+In case that the methdology was provided in code, the disclaimer reads "Coded and Converted by..." as opposed to just "Coded by...".
+
+Whilst the CSD methodologies from literature do state their express intentions between type (1) and type (2) methodologies, our investigation determines that they are often not adept at their intended use case.
+As such, it is recommended to consider the different methodologies (start by using the Example.m script) in order to get a feel for their strengths and weaknesses. 
 
 ## INPUT DATA
 The different types of input into each methodology are defined with the assumption that all data is at 1-minute resolution, and that all data is a single column vector, and also that each of the same index across different variables corresponds to the same time-step.
 Note that no methodology needs all of these, however, all are needed should one wish to run all methods. The fewest inputs is two, the most is six. Some need clear-sky irradiance, others do not, some it doesn't matter even it if is a poor clear-sky estimate due to optimisation. 
 
-  ghi = Global horizontal irradiance, column vector. Not necessary
-       to be continuous so long as the ghics perfectly corresponds.
+  ghi = Global horizontal irradiance (Wm-2), column vector. 
  
-  ghics = Clear-sky global horizontal irradiance, column vector. 
+  ghics = Clear-sky global horizontal irradiance (Wm-2), column vector. 
 
-  dni = Direct normal irradiance, column vector. Not necessary
-       to be continuous so long as the dnics perfectly corresponds.
+  dni = Direct normal irradiance (Wm-2), column vector.
  
-  dnics = Clear-sky direct normal irradiance, column vector. 
+  dnics = Clear-sky direct normal irradiance (Wm-2), column vector. 
 
-  dif = Diffuse horizontal irradiance, column vector. Not necessary
-       to be continuous so long as the difcs perfectly corresponds.
- 
-  difcs = Clear-sky diffuse horizontal irradiance, column vector. 
+  dif = Diffuse horizontal irradiance (Wm-2), column vector. 
 
-  zen = Zenith angle in degrees. Corresponding to all inputs
+  zen = Solar zenith angle (degrees), column vector.
 
-  exth = Horizontal projection of extraterrestrial irradiance. 
+  exth = Horizontal projection of extraterrestrial irradiance (Wm-2), column vector.
 
-  aod = Total aerosol extinction at 550nm.
+  aod = Total aerosol extinction at 550nm (dimensionless), column vector.
 
-  plot_figure = if this variable is defined by any class, then a figure is
-               plotted illustrating the outcome of the CSD method, e.g. 1;
+  plot_figure = if this variable is defined, a figure is plotted illustrating the outcome of the select CSD method, e.g. 1;
                
 
 ## OUTPUT DATA
 Each CSD model offers a single output which is of identical dimensions to the input data. Pay particular attention to the fact that 1 indicates cloud/not-clear and 0 indicates clear. This can, of course be swapped. 
 
-  csd = clear-sky detection. a flag of 1 means that clouds were detected
-       whereas a flag of 0 means that the hour is clear.
+  csd = clear-sky detection. a flag of 1 means that clouds were detected  whereas a flag of 0 means that the hour is clear.
        
 ## EXAMLPE
 An example of all the methodologies in action is provided in "Example.m". 
