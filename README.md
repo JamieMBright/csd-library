@@ -3,11 +3,6 @@
 ## What is a clear-sky detection methodology?
 A clear-sky detection (CSD) methodology is one that analysies time-series of irradiance data and determines one of two things, (1) whether or not the sky at the time of measurement was free of clouds, or (2) whether or not there was a clear line of sight to the sun at the time of measurement.
 
-## Download
-To download or clone this repository, click the above link or [click here to visit the csd-library Github Repository](https://github.com/JamieMBright/csd-library).
-
-Or simply [download the whole master repository](https://github.com/JamieMBright/csd-library/archive/master.zip) as a `.zip` file.
-
 ## Introduction
 Welcome to the CSD methodology library. 
 This is a collection of as many CSD methodologies as was found in literature and subsequently coded into Matlab. 
@@ -20,6 +15,9 @@ As such, it is recommended to consider the different methodologies (start by usi
 
 ![Time series of clear-sky detection from every CSD model, the same graphic as produced by Example.m](https://github.com/JamieMBright/csd-library/blob/master/Example_output.PNG "Example_output.PNG")
 
+## Download
+To download or clone this repository, click the above link or [click here to visit the csd-library Github Repository](https://github.com/JamieMBright/csd-library).
+Or simply [download the whole master repository](https://github.com/JamieMBright/csd-library/archive/master.zip) as a `.zip` file.
 
 ## Input Data
 The different types of input into each methodology are defined with the assumption that all data is at 1-minute resolution, and that all data is a single column vector, and also that each of the same index across different variables corresponds to the same time-step.
