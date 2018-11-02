@@ -59,7 +59,9 @@ All models within this library have been interpretted from literature, converted
 These methods are freely available to be downloaded and adopted, though check the licenses. A strict requirement for doing so is that any publications that utilise any model in this libaray must cite the original source as stated in each model [1], cite this repository as the location for obtaining the models [2] and furthermore reference the following work [3] which was the purpose for the conception of this library:
 
 [1] Found at the top of the script of each model
+
 [2] Bright, Jamie M. 2018. Clear-sky Detection Library. Github repository, url <https://github.com/JamieMBright/csd-library>.
+
 [3] Gueymard, Christian. A., Bright, Jamie M. and Lingfors, David. 2018. A posterori clear-sky idenfication methods in solar irradiance time series: Review and validation. Solar Energy. In Review.
 
 
