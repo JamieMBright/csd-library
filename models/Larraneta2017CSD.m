@@ -120,7 +120,7 @@ interval3 = [hint66pc;hint100pc];
 % window. If the hour passes the tests, the minutes within the hour pass.
 
 % take mean hourly values. Potential issue with non-continous data...
-% hdni =   nanmean(reshape(dni(1:length(dni)-mod(length(dni),60)),[60,(length(dni)-mod(length(dni),60))/60]),1);
+hdni =   nanmean(reshape(dni(1:length(dni)-mod(length(dni),60)),[60,(length(dni)-mod(length(dni),60))/60]),1);
 hdnics = nanmean(reshape(dnics(1:length(dni)-mod(length(dni),60)),[60,(length(dnics)-mod(length(dnics),60))/60]),1);
 hzen =   nanmean(reshape(zen(1:length(dni)-mod(length(dni),60)),[60,(length(zen)-mod(length(zen),60))/60]),1);
 
