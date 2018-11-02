@@ -13,7 +13,7 @@ In case that the methdology was provided in code, the disclaimer reads "Coded an
 Whilst the CSD methodologies from literature do state their express intentions between type (1) and type (2) methodologies, our investigation determines that they are often not adept at their intended use case.
 As such, it is recommended to consider the different methodologies (start by using the Example.m script) in order to get a feel for their strengths and weaknesses. 
 
-![Time series of clear-sky detection from every CSD model, the same graphic as produced by Example.m](https://github.com/JamieMBright/csd-library/Example_output.PNG "Example_output.PNG")
+![Time series of clear-sky detection from every CSD model, the same graphic as produced by Example.m](https://github.com/JamieMBright/csd-library/raw/master/Example_output.PNG "Example_output.PNG")
 
 ## Download
 To download or clone this repository, click the above link or [click here to visit the csd-library Github Repository](https://github.com/JamieMBright/csd-library).
