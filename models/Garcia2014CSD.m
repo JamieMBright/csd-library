@@ -135,7 +135,7 @@ difn = dif./cosd(zen).^b;
 
 % 11 minute period standard deviation with a detection limit of 0.0012.
 difn11 = hankel(difn,[difn(end),NaN(1,10)]);
-dif_std = [NaN(5,1);std(difn11,0,2,'omitnan');NaN(5,1)]';
+dif_std = std(difn11,0,2,'omitnan');
 
 %Cannot remotely get close to sdt dev of 0.0012 as suggested by the paper.
 %a value of 5 looks decent though.
