@@ -81,7 +81,7 @@ aliamartinez = AliaMartinez2016CSD(ghi,ghics,zen,LST);
 larraneta    = Larraneta2017CSD(dni,dnics,zen);
 shen         = Shen2018CSD(dni,dnics,aod);
 ellis        = Ellis2018CSD(ghi,ghics);
-zhang        = Zhang2018CSD(ghi,ghics,zen,LST);
+zhang        = Zhang2018CSD(ghi,ghics);
 ruizarias    = RuizArias2018CSD(ghi,dif,zen,LST);
 
 %% Figures
