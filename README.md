@@ -39,7 +39,7 @@ Note that no methodology needs all of these, however, all are needed should one 
 
   `aod` = Total aerosol extinction at 550nm (dimensionless), column vector.
   
-  `LST` = 
+  `LST` =  the local solar time, datevector.
 
   `plot_figure` = if this variable is defined, a figure is plotted illustrating the outcome of the select CSD method, e.g. 1;
                
