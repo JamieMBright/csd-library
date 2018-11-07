@@ -63,7 +63,7 @@ A summary of the different model's inputs are detailed in the below table. Note 
 |Quesada-Ruiz et al. (2015) | Quesada |  |  | • |  |  | • |  | | 
 |Reno and Hansen (2016) | Reno |  |  | • |  |  | • |  | |
 |Xie and Liu (2013) | Xie | • | • | • | • |  | • | • | |
-|Zhang et al. (2018) | Zhang | • |  | • |  |  | • |  | | •
+|Zhang et al. (2018) | Zhang |  |  | • |  |  | • |  | | 
 ||||||||
 |Gueymard (2013)|	Gueymard	|•|	      |	    |•    |	    |	      |•      |	    |
 |Larraneta et al. (2017)|Larraneta|•|	|	    |•    |	    |	      |•	    |     |
