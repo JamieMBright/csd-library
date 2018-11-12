@@ -49,14 +49,28 @@ if length(ghi)~=length(ghics)
 end
 
 % Parameterisation for the Ellis method.
+% if strcmp(parameterisation,'new')
+    
+    mean_diff=79.144;
+    max_diff=59.152;
+    lower_line_length=-41.416;
+    upper_line_length=77.789;
+    var_diff=0.00745;
+    slope_dev=68.579;
+% else
+%     
+%     mean_diff=75;
+%     max_diff=75;
+%     lower_line_length=-5;
+%     upper_line_length=10;
+%     var_diff=0.005;
+%     slope_dev=8;   
+% end
+
 window_length = 10;
-mean_diff=75;
-max_diff=75;
-lower_line_length=-5;
-upper_line_length=10;
-var_diff=0.005;
-slope_dev=8;
 max_iterations=20;
+
+
 
 % produce Hankel matrices for GHI and GHIcs as defined by window_length.
 ghi_window = hankel(ghi,[ghi(end),NaN(1,window_length-1)]);

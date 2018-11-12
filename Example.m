@@ -82,11 +82,12 @@ larraneta    = Larraneta2017CSD(dni,dnics,zen);
 shen         = Shen2018CSD(dni,dnics,aod);
 ellis        = Ellis2018CSD(ghi,ghics);
 zhang        = Zhang2018CSD(ghi,ghics);
+zhao         = Zhao2018CSD(dni,dnics);
 ruizarias    = RuizArias2018CSD(ghi,dif,zen,LST);
 
 %% Figures
 % produce a large figure showing the data from all models
-methods = {'Perez','Batlles','LongAckerman','Ineichen06','Ineichen09','Polo','Garcia','Xie','Gueymard','Lefevre','QuesadaRuiz','Reno','Inman','Ineichen16','AliaMartinez','Larraneta','Shen','Ellis','Zhang','RuizArias'};
+methods = {'Perez','Batlles','LongAckerman','Ineichen06','Ineichen09','Polo','Garcia','Xie','Gueymard','Lefevre','QuesadaRuiz','Reno','Inman','Ineichen16','AliaMartinez','Larraneta','Shen','Ellis','Zhang','RuizArias','Zhao'};
 ymax = 1300;
 f=figure('name','CSD methods','color','w');
 f.Position = [250,250,1200,500];
