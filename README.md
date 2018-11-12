@@ -62,13 +62,14 @@ A summary of the different model's inputs are detailed in the below table. Note 
 |Polo et al. (2009) | Polo | • |  | • |  |  | • |  | | •
 |Quesada-Ruiz et al. (2015) | Quesada |  |  | • |  |  | • |  | | 
 |Reno and Hansen (2016) | Reno |  |  | • |  |  | • |  | |
+|Shen et al. (2018)	|Shen	|	|         |•    |•    |     |       |•	    |•    |
 |Xie and Liu (2013) | Xie | • | • | • | • |  | • | • | |
 |Zhang et al. (2018) | Zhang |  |  | • |  |  | • |  | | 
+|Zhao et al. (2018)	|Zhao	||	|	    |•    |	    |	      |•	    |     |
 ||||||||
 |Gueymard (2013)|	Gueymard	|•|	      |	    |•    |	    |	      |•      |	    |
 |Larraneta et al. (2017)|Larraneta|•|	|	    |•    |	    |	      |•	    |     |
 |Ruiz-Arias et al. (2018)|RuizArias|•||•	  |     |•    |       |       |     | •	
-|Shen et al. (2018)	|Shen	|	|         |•    |•    |     |       |•	    |•    |
                
 
 ## Output Data
