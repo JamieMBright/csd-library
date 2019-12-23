@@ -65,7 +65,8 @@ LST = datevec(data(:,10));
 % produce clear-sky detection from each model available.
 perez        = Perez1990CSD(dif,dni,zen);
 batlles      = Batlles1999CSD(ghi,dif,exth,zen);
-brightsun     = BrightSun2020CSD(zen,ghi,ghics,dif,difcs,LST);
+brightsunc     = BrightSun2020CSDc(zen,ghi,ghics,dif,difcs,LST);
+brightsuns     = BrightSun2020CSDs(zen,ghi,ghics,dif,difcs,LST);
 longackerman = LongAckerman2000CSD(ghi,dif,zen,LST);
 ineichen06   = Ineichen2006CSD(exth,dni,zen);
 ineichen09   = Ineichen2009CSD(ghi,exth,zen);
@@ -88,7 +89,7 @@ ruizarias    = RuizArias2018CSD(ghi,dif,zen,LST);
 
 %% Figures
 % produce a large figure showing the data from all models
-methods = {'Perez','Batlles','BrightSun','LongAckerman','Ineichen06','Ineichen09','Polo','Garcia','Xie','Gueymard','Lefevre','QuesadaRuiz','Reno','Inman','Ineichen16','AliaMartinez','Larraneta','Shen','Ellis','Zhang','RuizArias','Zhao'};
+methods = {'Perez','Batlles','BrightSunc','BrightSuns','LongAckerman','Ineichen06','Ineichen09','Polo','Garcia','Xie','Gueymard','Lefevre','QuesadaRuiz','Reno','Inman','Ineichen16','AliaMartinez','Larraneta','Shen','Ellis','Zhang','RuizArias','Zhao'};
 ymax = 1300;
 f=figure('name','CSD methods','color','w');
 f.Position = [10,10,1200,500];
