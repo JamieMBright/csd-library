@@ -1,5 +1,5 @@
 % J. Polo, L. F. Zarzalejo, L. Martín, A. A. Navarro, and R. Marchante, 
-% ‘Estimation of daily Linke turbidity factor by using global irradiance 
+% ‘Good CSDs methodology, not a good CSDc, 
 % measurements at solar noon’, Sol. Energy, vol. 83, no. 8, pp. 1177–1185, 
 % 2009.
 %

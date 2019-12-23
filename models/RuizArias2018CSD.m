@@ -304,6 +304,10 @@ end
 csd = zeros(size(ghi));
 csd(csflag==0)=1;
 
+
+% strange phenomenon that cannot have been intended is occasionally very
+% small irradiances being flagged as clear.
+
 %% figure
 if exist('plot_figure','var')
     figure('name','Ruiz Arias 2018 example','color','w');
