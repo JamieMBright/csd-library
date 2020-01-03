@@ -1,7 +1,14 @@
 # CLEAR-SKY DETECTION METHODOLOGY LIBRARY
 
 ## What is a clear-sky detection methodology?
-A clear-sky detection (CSD) methodology is one that analysies time-series of irradiance data and determines one of two things, (1) whether or not the sky at the time of measurement was free of clouds, or (2) whether or not there was a clear line of sight to the sun at the time of measurement.
+A clear-sky detection (CSD) methodology is one that analysies time-series of irradiance data and determines one of two things, (1) whether or not the sky at the time of measurement was free of clouds [CSDc], or (2) whether or not there was a clear line of sight to the sun at the time of measurement [CSDs].
+
+## Our recommendations
+After reviewing all available methodologies from the library and published the findings (Gueymard et al, 2019 [3], see bottom of README.md) we have a good grasp of which models perform best.
+We found that, despite some models performing excellently in certain climtaes, no model in [3] could perform reliably everywhere. 
+Becasue of this, we designed our own model drawing influence from all involved here: the **Bright-Sun** CSDc and CSDs models (though primarily a CSDc). 
+This work has been published (Bright et al. 2020 [4]) alongside a thorough investigation into the other methodologies detailed herein. 
+Naturally, we find this methodology the most reliable, and it is quite insensitive to choice of clear-sky irradiance model (of which I have also provided substantial amounts of code in my other repository at https://github.com/JamieMBright/clear-sky-models).
 
 ## Introduction
 Welcome to the CSD methodology library. 
@@ -12,6 +19,8 @@ In the case when the methodology was provided in code, the disclaimer reads "Cod
 
 Whilst the CSD methodologies from literature do state their express intentions between type (1) and type (2) methodologies, our investigation determines that they are often not adept at their intended use case.
 As such, it is recommended to consider the different methodologies (start by using the Example.m script) in order to get a feel for their strengths and weaknesses. 
+
+The below image shows an example of all the methodologies within the library (produced using Example.m). The black line shows the detected clear-sky periods. Those with a blue line are CSDc methods an plotted on GHI; those in red are CSDs methods and plotted on DNI. All methods can be used as CSDs or CSDc, though some are clearly better than others.
 
 ![Time series of clear-sky detection from every CSD model, the same graphic as produced by Example.m](https://github.com/JamieMBright/csd-library/raw/master/Example_output.PNG "Example_output.PNG")
 
@@ -44,7 +53,7 @@ Note that no methodology needs all of these, however, all are needed should one 
   `plot_figure` = if this variable is defined, a figure is plotted illustrating the outcome of the select CSD method, e.g. 1;
                
                
-A summary of the different model's inputs are detailed in the below table. Note that the top 16 models are cloudless-sky (type 1) methodologies, and the bottom 4 are line of sight detection methodologies (type 2). 
+A summary of the different model's inputs are detailed in the below table. Note that the top 17 models are cloudless-sky CSDc (type 1) methodologies, and the bottom 5 are line of sight CSDs detection methodologies (type 2). 
 
 | Author | Abbreviation	| `zen`	| `exth`	| `ghi`	| `dni`	| `dif` | `ghics`	| `dnics`	| `difcs`	| `aod` |  `LST`
 | ---------------------| ------ |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -74,9 +83,9 @@ A summary of the different model's inputs are detailed in the below table. Note 
 |Zhao et al. (2018)	|Zhao	||	|	    |•    |	    |	      |•	    |     | |
 
 ## Output Data
-Each CSD model offers a single output which is of identical dimensions to the input data. Pay particular attention to the fact that 1 indicates cloud/not-clear and 0 indicates clear. This can, of course be swapped. 
+Each CSD model offers a single output which is of identical dimensions to the input data. Pay particular attention to the fact that 1 indicates cloud/not-clear and 0 indicates clear. This can of course be swapped or converted to a Boolean etc. However, this is the convention we adopt.
 
-  csd = clear-sky detection. A value of 1 means that clouds were detected whereas a flag of 0 means that the hour is clear.
+  csd = clear-sky detection. A value of 1 means that clouds were present whereas a flag of 0 means that the hour is clear.
   
   **1 = cloud**
   
@@ -87,7 +96,7 @@ An example of all the methodologies in action is provided in `Example.m`.
 This script should work first time with no inputs and produce a nice figure to see every model's outputs. 
 In the "Example.m" script, sample data is provided from Adelaide Airport irradiance station operated by the Bureau of Meteorology, Australia. 
 It is situated at -34.9524 degrees of latitude and 138.5196 degrees of longitude (East of prime meridian) and at an elevation of 2m above sea level. 
-The time stamps are not provided. 
+The time stamps are not provided to anonymise the data. 
 You can use this to decide which is the most suitable method for your needs, as some have better applications than others.
 For eaxmple, the Zhang model is by far the best at isolating only entirely clear days, something not offered by other models, however, it is hyper-conservative in that it rejects the vast majority of days where clear-sky conditions are also observed.
 Contrastingly, the Ellis/Reno/Inman are the most adept in identifying any possible period where it could be considered clear-sky, though one could argue that they are better type 2 methodologies than those advertised as so.
@@ -116,4 +125,6 @@ These methods are freely available to be downloaded and adopted, though check th
 
 [2] Bright, Jamie M. 2018. Clear-sky Detection Library. Github repository, url <https://github.com/JamieMBright/csd-library>.
 
-[3] Gueymard, Christian. A., Bright, Jamie M. and Lingfors, David. 2018. A posteriori clear-sky identification methods in solar irradiance time series: Review and validation. Solar Energy. In Review.
+[3] Gueymard, Christian. A., Bright, Jamie M. and Lingfors, David. 2018. posteriori clear-sky identification methods in solar irradiance time series: Review and preliminary validation using sky imagers. Renewable and Sustainable Energy Reviews, Volume 109, July 2019, Pages 412-427, https://doi.org/10.1016/j.rser.2019.04.027
+
+[4] Bright, Jamie A., Sun, Xixi, Gueymard, Christian A., Acord, Brendan, Wang, Peng and Engerer, Nicholas A. 2020. Bright-Sun: a globally applicable 1-min clear-sky detection model. Renewable and Sustainable Energy Reviews, Volume xxx, xx 2020, Pages xxx-xxx, https://doixxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. IN PRESS.
