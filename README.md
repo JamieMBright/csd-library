@@ -47,7 +47,7 @@ Note that no methodology needs all of these, however, all are needed should one 
 A summary of the different model's inputs are detailed in the below table. Note that the top 16 models are cloudless-sky (type 1) methodologies, and the bottom 4 are line of sight detection methodologies (type 2). 
 
 | Author | Abbreviation	| `zen`	| `exth`	| `ghi`	| `dni`	| `dif` | `ghics`	| `dnics`	| `difcs`	| `aod` |  `LST`
-| ---------------------| ------ |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| ---------------------| ------ |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Alia-Martinez et al. (2016) | AliaMartinez | • |  | • |  |  | • |  | | | •
 |Batlles | Batlles | • | • | • |  | • |  |  | | |
 |Bright et al. (2020) | BrightSunCSDc | • | • | • |  | • | • |  | • | | • 
