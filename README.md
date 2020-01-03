@@ -46,30 +46,32 @@ Note that no methodology needs all of these, however, all are needed should one 
                
 A summary of the different model's inputs are detailed in the below table. Note that the top 16 models are cloudless-sky (type 1) methodologies, and the bottom 4 are line of sight detection methodologies (type 2). 
 
-| Author | Abbreviation	| `zen`	| `exth`	| `ghi`	| `dni`	| `dif` | `ghics`	| `dnics`	| `aod` |  `LST`
+| Author | Abbreviation	| `zen`	| `exth`	| `ghi`	| `dni`	| `dif` | `ghics`	| `dnics`	| `difcs`	| `aod` |  `LST`
 | ---------------------| ------ |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|Alia-Martinez et al. (2016) | AliaMartinez | • |  | • |  |  | • |  | | •
-|Batlles | Batlles | • | • | • |  | • |  |  | |
-|Ellis et al. (2018) | Ellis |  |  | • |  |  | • |  | |
-|Garcia et al. (2014) | Garcia | • |  | • |  | • |  |  | •| •
-|Ineichen (2006) | Ineichen06 | • | • |  | • |  |  |  | |
-|Ineichen et al. (2009) | Ineichen09 | • | • | • |  |  |  |  | |
-|Ineichen (2016) | Ineichen16 | • | • | • | • | • |  |  | •|
-|Inman et al. (2015) | Inman |  |  | • | • |  | • | • | |
-|Lefevre (2013) | Lefevre | • | • | • |  | • |  |  | |
-|Long and Ackerman (2000) | Long | • |  | • |  | • |  |  | | •
-|Perez et al. (1990) | Perez | • |  |  | • | • |  |  | |
-|Polo et al. (2009) | Polo | • |  | • |  |  | • |  | | •
-|Quesada-Ruiz et al. (2015) | Quesada |  |  | • |  |  | • |  | | 
-|Reno and Hansen (2016) | Reno |  |  | • |  |  | • |  | |
-|Xie and Liu (2013) | Xie | • | • | • | • |  | • | • | |
-|Zhang et al. (2018) | Zhang |  |  | • |  |  | • |  | | 
-||||||||
-|Gueymard (2013)|	Gueymard	|•|	      |	    |•    |	    |	      |•      |	    |
-|Larraneta et al. (2017)|Larraneta|•|	|	    |•    |	    |	      |•	    |     |
-|Ruiz-Arias et al. (2018)|RuizArias|•||•	  |     |•    |       |       |     | •	
-|Shen et al. (2018)	|Shen	|	|         |•    |•    |     |       |•	    |•    |
-|Zhao et al. (2018)	|Zhao	||	|	    |•    |	    |	      |•	    |     |
+|Alia-Martinez et al. (2016) | AliaMartinez | • |  | • |  |  | • |  | | | •
+|Batlles | Batlles | • | • | • |  | • |  |  | | |
+|Bright et al. (2020) | BrightSunCSDc | • | • | • |  | • | • |  | • | | • 
+|Bright et al. (2020) | BrightSunCSDs | • | • | • |  | • | • |  | • | | • 
+|Ellis et al. (2018) | Ellis |  |  | • |  |  | • | | | |
+|Garcia et al. (2014) | Garcia | • |  | • |  | • |  | | | •| •
+|Ineichen (2006) | Ineichen06 | • | • |  | • |  |  |  | | |
+|Ineichen et al. (2009) | Ineichen09 | • | • | • |  |  | | |  | |
+|Ineichen (2016) | Ineichen16 | • | • | • | • | • |  | | | •|
+|Inman et al. (2015) | Inman |  |  | • | • |  | • | • | | |
+|Lefevre (2013) | Lefevre | • | • | • |  | • |  |  | | |
+|Long and Ackerman (2000) | Long | • |  | • |  | • |  | | | | •
+|Perez et al. (1990) | Perez | • |  |  | • | • |  |  | | |
+|Polo et al. (2009) | Polo | • |  | • |  |  | • |  | | | •
+|Quesada-Ruiz et al. (2015) | Quesada |  |  | • |  |  | • | | | | 
+|Reno and Hansen (2016) | Reno |  |  | • |  |  | • |  | | |
+|Xie and Liu (2013) | Xie | • | • | • | • |  | • | • | | |
+|Zhang et al. (2018) | Zhang |  |  | • |  |  | • |  | | |
+|||||||||
+|Gueymard (2013)|	Gueymard	|•|	      |	    |•    |	    |	      |•      |	    | |
+|Larraneta et al. (2017)|Larraneta|•|	|	    |•    |	    |	      |•	    |     | |
+|Ruiz-Arias et al. (2018)|RuizArias|•||•	  |     |•    |       |       |   |  | •	
+|Shen et al. (2018)	|Shen	|	|         |•    |•    |     |       |•	   | |•    |
+|Zhao et al. (2018)	|Zhao	||	|	    |•    |	    |	      |•	    |     | |
 
 ## Output Data
 Each CSD model offers a single output which is of identical dimensions to the input data. Pay particular attention to the fact that 1 indicates cloud/not-clear and 0 indicates clear. This can, of course be swapped. 
