@@ -1,5 +1,7 @@
-function [csd, csd_tricomponent, ghics_optimised,dnics_optimised,difcs_optimised] = BrightSun2020CSDs(zen,ghi,ghics,dif,difcs,LST,plot_figure)% The Bright-Sun clear-sky detection methodology, 2020.
-% Line-of-sight CSDs
+function [csd, csd_tricomponent, ghics_optimised,dnics_optimised,difcs_optimised] = BrightSun2020CSDc(zen,ghi,ghics,dif,difcs,LST,plot_figure)
+% The Bright-Sun clear-sky detection methodology, 2020.
+% Cloudless sky CSDc
+%
 % ## References ##
 %
 % M. Alia-Martinez, J. Antonanzas, R. Urraca, F. J. Martinez-De-Pison, and
@@ -226,13 +228,13 @@ lower_alpha_limit = 0.7;
 % Duration filter strictness
 % First durational window. Higher time but lower strictness.
 % The window is the duration size of the window in mins. 
-window_1st_filter = 90;
+window_1st_filter = 1;
 % Tolerance is the permissible number of CSD periods within the window. 
-tolerance_1st_filter = 10;
+tolerance_1st_filter = 1;
 
 % Second durational window. Lower time but higher strictness.
-window_2nd_filter = 30;
-tolerance_2nd_filter = 0;
+window_2nd_filter = 1;
+tolerance_2nd_filter = 1;
 
 %% Initial CSD guess using Reno for Optimisation Only.
 %%%
