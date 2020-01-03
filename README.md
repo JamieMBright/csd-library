@@ -51,7 +51,6 @@ A summary of the different model's inputs are detailed in the below table. Note 
 |Alia-Martinez et al. (2016) | AliaMartinez | • |  | • |  |  | • |  | | | •
 |Batlles | Batlles | • | • | • |  | • |  |  | | |
 |Bright et al. (2020) | BrightSunCSDc | • | • | • |  | • | • |  | • | | • 
-|Bright et al. (2020) | BrightSunCSDs | • | • | • |  | • | • |  | • | | • 
 |Ellis et al. (2018) | Ellis |  |  | • |  |  | • | | | |
 |Garcia et al. (2014) | Garcia | • |  | • |  | • |  | | | •| •
 |Ineichen (2006) | Ineichen06 | • | • |  | • |  |  |  | | |
@@ -67,6 +66,7 @@ A summary of the different model's inputs are detailed in the below table. Note 
 |Xie and Liu (2013) | Xie | • | • | • | • |  | • | • | | |
 |Zhang et al. (2018) | Zhang |  |  | • |  |  | • |  | | |
 |||||||||
+|Bright et al. (2020) | BrightSunCSDs | • | • | • |  | • | • |  | • | | • 
 |Gueymard (2013)|	Gueymard	|•|	      |	    |•    |	    |	      |•      |	    | |
 |Larraneta et al. (2017)|Larraneta|•|	|	    |•    |	    |	      |•	    |     | |
 |Ruiz-Arias et al. (2018)|RuizArias|•||•	  |     |•    |       |       |   |  | •	
