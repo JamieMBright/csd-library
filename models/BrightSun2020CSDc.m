@@ -479,7 +479,7 @@ end
 
 % plot example of the optimisation working
 if exist('plot_figure','var')
-    lst_plot = datetime(datevec(LST));
+    lst_plot = datetime(LST);
     figure('Name','Example of clear-sky optimisation','color','w')
     plot(lst_plot,ghi)
     hold on
