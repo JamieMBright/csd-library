@@ -5,8 +5,8 @@ function [csd, csd_tricomponent, ghics_optimised,dnics_optimised,difcs_optimised
 % ## References ##
 %
 % M. Alia-Martinez, J. Antonanzas, R. Urraca, F. J. Martinez-De-Pison, and
-% F. Antonanzas-Torres, ‘Benchmark of algorithms for solar clear- sky
-% detection’, J. Renew. Sustain. Energy, vol. 8, no. 3, 2016.
+% F. Antonanzas-Torres, â€˜Benchmark of algorithms for solar clear- sky
+% detectionâ€™, J. Renew. Sustain. Energy, vol. 8, no. 3, 2016.
 %
 % Ellis, 2018, PVLIB detect_ghics at commit
 % f4e4ad3bbe335fa49bf300ce53784d69d719ca98
@@ -33,8 +33,8 @@ function [csd, csd_tricomponent, ghics_optimised,dnics_optimised,difcs_optimised
 % periods of clear sky direct normal irradiance. Renewable Energy. 113,
 % 756-763.
 %
-% Quesada-Ruiz, Samuel Linares-Rodriguez, Alvaro Ruiz-arias, José A
-% Pozo-Vázquez, David. 2015. ScienceDirect An advanced ANN-based method to
+% Quesada-Ruiz, Samuel Linares-Rodriguez, Alvaro Ruiz-arias, JosÃ© A
+% Pozo-VÃ¡zquez, David. 2015. ScienceDirect An advanced ANN-based method to
 % estimate hourly solar radiation from multi-spectral MSG imagery. Solar
 % Energy. 115, 494-504.
 %
@@ -319,7 +319,7 @@ csd_initial = csd_ghiz;
 
 if exist('plot_figure','var')
     % % plot an example of the first guess CSD.
-    lst_plot = datetime(datevec(LST));
+    lst_plot = datetime(LST);
     figure('name','Initial CSD from Reno 2016 example','color','w');
     hold on
     plot(lst_plot,ghi)
