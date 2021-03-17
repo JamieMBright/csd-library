@@ -223,6 +223,7 @@ max_iterations=20;
 % irradiance curve, where 1 = no change. 
 upper_alpha_limit = 1.5;
 lower_alpha_limit = 0.7;
+lower_alpha_limit_DIF = 0.3;
 
 
 % Duration filter strictness
@@ -466,7 +467,7 @@ for d = 1:length(unique_days)
     %dif
     temp = alpha_dif(d);
     temp(temp>upper_alpha_limit) = upper_alpha_limit;
-    temp(temp<lower_alpha_limit) = lower_alpha_limit;
+    temp(temp<lower_alpha_limit_DIF) = lower_alpha_limit_DIF;
     alpha_dif(d)=temp;
         
     % Apply the clear-sky correction factors to the clear-sky estimates for
