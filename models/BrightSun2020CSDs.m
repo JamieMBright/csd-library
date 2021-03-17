@@ -223,6 +223,7 @@ max_iterations=20;
 % irradiance curve, where 1 = no change. 
 upper_alpha_limit = 1.5;
 lower_alpha_limit = 0.7;
+lower_alpha_limit_DIF = 0.4;
 
 
 % Duration filter strictness
@@ -319,7 +320,7 @@ csd_initial = csd_ghiz;
 
 if exist('plot_figure','var')
     % % plot an example of the first guess CSD.
-    lst_plot = datetime(datevec(LST));
+    lst_plot = datetime(LST);
     figure('name','Initial CSD from Reno 2016 example','color','w');
     hold on
     plot(lst_plot,ghi)
@@ -466,7 +467,7 @@ for d = 1:length(unique_days)
     %dif
     temp = alpha_dif(d);
     temp(temp>upper_alpha_limit) = upper_alpha_limit;
-    temp(temp<lower_alpha_limit) = lower_alpha_limit;
+    temp(temp<lower_alpha_limit_DIF) = lower_alpha_limit_DIF;
     alpha_dif(d)=temp;
         
     % Apply the clear-sky correction factors to the clear-sky estimates for
@@ -479,7 +480,7 @@ end
 
 % plot example of the optimisation working
 if exist('plot_figure','var')
-    lst_plot = datetime(datevec(LST));
+    lst_plot = datetime(LST);
     figure('Name','Example of clear-sky optimisation','color','w')
     plot(lst_plot,ghi)
     hold on
@@ -730,7 +731,7 @@ if exist('plot_figure','var')
     allCSD = ghi; allCSD(csd_overall==1)=NaN;
     plot(ghiCSD,'linewidth',4,'color','k')
     plot(ghics,'k:')
-    plo t(allCSD,'LineWidth',2,'Color','g')
+    plot(allCSD,'LineWidth',2,'Color','g')
     plot(dnics,'k:')
     plot(difcs,'k:')
     plot(dniCSD,'linewidth',2,'color','k')
