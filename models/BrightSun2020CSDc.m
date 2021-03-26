@@ -731,7 +731,7 @@ if exist('plot_figure','var')
     allCSD = ghi; allCSD(csd_overall==1)=NaN;
     plot(ghiCSD,'linewidth',4,'color','k')
     plot(ghics,'k:')
-    plo t(allCSD,'LineWidth',2,'Color','g')
+    plot(allCSD,'LineWidth',2,'Color','g')
     plot(dnics,'k:')
     plot(difcs,'k:')
     plot(dniCSD,'linewidth',2,'color','k')
